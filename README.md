@@ -1,6 +1,6 @@
 # webcrawler
 
-## Instructions to run 
+## Instructions to Run 
 1. Clone the repository
 ```
 git clone https://github.com/AmanTahiliani/webcrawler.git
@@ -9,14 +9,24 @@ git clone https://github.com/AmanTahiliani/webcrawler.git
 ```
 cd webcrawler
 ```
-3. Install the requirements
+3. Create a virtual environment
+```
+python3 -m venv venv
+```
+4. Activate the virtual environment
+```
+source venv/bin/activate
+```
+5. Install the requirements
 ```
 pip install -r requirements.txt
 ```
-4. Run the shell script
+6. Run the shell script
 ```
 ./amantahiliani.sh 
 ```
+
+## Usage
 
 Note: If you get a permission denied error, run the following command
 ```
