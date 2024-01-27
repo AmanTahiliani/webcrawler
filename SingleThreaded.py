@@ -34,15 +34,19 @@ class WebCrawler:
             for page_link in all_page_links:
                 self.url_queue.append(urljoin(url, page_link["href"]))
 
-            filtered_elements = soup.find_all(lambda tag: tag.name in ["h1", "h2", "h3"] and not tag.find_parents(["header", "footer","nav"]))
-
+            filtered_elements = soup.find_all(
+                lambda tag: tag.name in ["h1", "h2", "h3"]
+                and not tag.find_parents(["header", "footer", "nav"])
+            )
 
             for tags in filtered_elements:
                 current_sentence = tags.text
                 for current_word in current_sentence.split():
                     current_word = current_word.lower()
 
-                    current_word_dict = self.h1_word_frequency.get(current_word, {url:0})
+                    current_word_dict = self.h1_word_frequency.get(
+                        current_word, {url: 0}
+                    )
                     current_word_dict[url] = current_word_dict.get(url, 0) + 1
                     self.h1_word_frequency[current_word] = current_word_dict
 
@@ -83,7 +87,7 @@ class WebCrawler:
 
         print("Done Parsing Pages")
         print(f"Pages Parsed {len(self.visited_urls)}/{pages_to_parse}")
-        print(f'Words found in h1 {len(self.h1_word_frequency)}')
+        print(f"Words found in h1 {len(self.h1_word_frequency)}")
         print(self.h1_word_frequency)
         # print(f'Words found in h2 {len(self.h2_word_frequency)}')
         # print(self.h2_word_frequency)
